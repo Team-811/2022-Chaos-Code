@@ -56,7 +56,7 @@ public class LimelightAimX extends CommandBase{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (x >= -3.0 && x <= 3.0 && x !=0.0)
+            if (x >= -2.0 && x <= 2.0 && x !=0.0)
                 return true;
         }
         return false;
