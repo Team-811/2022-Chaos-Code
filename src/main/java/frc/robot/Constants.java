@@ -17,7 +17,7 @@ package frc.robot;
 public final class Constants {
     public static final double DRIVETRAIN_SPEED_SCALE = 0.7;
     public static final double DRIVE_SPEED = 0.1;
-    public static final double AIM_SPEED = 0.15;   
+    public static final double AIM_SPEED = 0.4;   
     public static final double STRAFE_SPEED = 0.7; 
 
 

@@ -37,6 +37,7 @@ public class LimelightSearch extends CommandBase{
     public boolean isFinished() {
         if (found == true)
             {
+                found = false;
                 return true;
             }
             else

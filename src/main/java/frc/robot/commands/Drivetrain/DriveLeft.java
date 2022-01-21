@@ -28,9 +28,14 @@ public class DriveLeft extends CommandBase {
        BL = 0.7;
        BR = 0.7;
 
+       if(RobotContainer.driveController.rightStick.getX() == 0.0){      
+        requiredSubsystem.driveWithMisery(-RobotContainer.driveController.leftStick.getY(),
+        RobotContainer.driveController.rightStick.getY(), requiredSubsystem.turnToAngle(requiredSubsystem.getGyro().getAngle()), FL, FR, BL, BR);
+       }
+       else{
        requiredSubsystem.driveWithMisery(-RobotContainer.driveController.leftStick.getY(),
        RobotContainer.driveController.rightStick.getY(), RobotContainer.driveController.rightStick.getX(), FL, FR, BL, BR);
- 
+       }
   }
 
   @Override

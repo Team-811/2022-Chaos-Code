@@ -7,7 +7,6 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 // import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.ADIS16448_IMU;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -160,7 +159,7 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
         SmartDashboard.putNumber("Back Left Wheel", bottomLeftMotor.getMotorOutputPercent());
         SmartDashboard.putNumber("Back Right Wheel", -bottomRightMotor.getMotorOutputPercent());
         SmartDashboard.putNumber("Ultrasonic", ultrasonic.getDistance());
-        Shuffleboard.getTab("SmartDashboard").add(gyro);
+        SmartDashboard.putNumber("Gyro Angle", gyro.getAngle());
     }
 
     @Override

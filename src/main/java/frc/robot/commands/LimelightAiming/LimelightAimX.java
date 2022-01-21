@@ -49,7 +49,7 @@ public class LimelightAimX extends CommandBase{
     @Override
     public boolean isFinished() {
         double x = LimelightFetch.getX();
-        if(x >= -3.0 && x <= 3.0 && x !=0.0)
+        if(x >= -2.0 && x <= 2.0 && x !=0.0)
         {
             try {
                 Thread.sleep(50);
