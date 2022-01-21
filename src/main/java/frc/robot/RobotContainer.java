@@ -5,8 +5,10 @@
 package frc.robot;
 
 
+import edu.wpi.first.wpilibj.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.Vision.Ultrasonic;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Drivetrain.DriveLeft;
 import frc.robot.commands.Drivetrain.DriveRight;
@@ -32,7 +34,9 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
  // private static final AHRS gyro = new AHRS();
-  private static final Drivetrain drivetrain = new Drivetrain();
+  private static final ADIS16448_IMU gyro = new ADIS16448_IMU();
+  private static final Ultrasonic ultrasonic = new Ultrasonic();
+  private static final Drivetrain drivetrain = new Drivetrain(gyro, ultrasonic);
   // private static final Kicker kicker = new Kicker();
   // Compressor pcmCompressor = new Compressor(PneumaticsModuleType.CTREPCM);
   public static BobXboxController driveController;
@@ -65,7 +69,7 @@ public class RobotContainer {
     // LimelightAimY limeAimY = new LimelightAimY(drivetrain);
     // LimelightAimX limeAimX = new LimelightAimX(drivetrain);
     // Command[] LimelightAimingCommands = {limeSearch, limeAimY, limeAimX};
-     driveController.bButton.whenPressed(new LimelightAim(drivetrain));
+     driveController.bButton.whileHeld(new LimelightAim(drivetrain));
      driveController.leftTriggerButton.whileHeld(new DriveLeft(drivetrain));
      driveController.leftTriggerButton.whenReleased(new DriveStop(drivetrain));
      driveController.rightTriggerButton.whileHeld(new DriveRight(drivetrain));

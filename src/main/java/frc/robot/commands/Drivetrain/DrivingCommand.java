@@ -24,10 +24,15 @@ public class DrivingCommand extends CommandBase {
   @Override
   public void execute() {
 
-
+    // if(RobotContainer.driveController.rightStick.getX() == 0.0){
+      
+    //   requiredSubsystem.driveWithMisery(-RobotContainer.driveController.leftStick.getY(),
+    //   RobotContainer.driveController.rightStick.getY(), requiredSubsystem.turnToAngle(requiredSubsystem.getGyro().getAngle()));
+    // }else {
     requiredSubsystem.driveWithMisery(-RobotContainer.driveController.leftStick.getY(),
         RobotContainer.driveController.rightStick.getY(), RobotContainer.driveController.rightStick.getX());
-  }
+   // }
+      }
 
   @Override
   public void end(boolean interrupted) {}

@@ -5,14 +5,16 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 // import com.ctre.phoenix.motorcontrol.ControlMode;
 // import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.kauailabs.navx.frc.AHRS;
 
+import edu.wpi.first.wpilibj.ADIS16448_IMU;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 import frc.robot.Constants;
 import frc.robot.RobotMap;
+import frc.robot.Vision.Ultrasonic;
 
 
 //this is a test
@@ -28,12 +30,16 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
     private double P = 0.150;
     private double I = 0.1;
     private double D = 1;
-    private double integral, previous_error, setpoint = 0;
+    private double integral = 0;
+    private double previous_error = 0;
+    private double  setpoint = 0;
     private double rcw = 0;
-    private AHRS gyro;
-  
+    private ADIS16448_IMU gyro;
+    private Ultrasonic ultrasonic;
 
-    public Drivetrain(){
+    public Drivetrain(ADIS16448_IMU m_gyro, Ultrasonic m_ultrasonic){
+        gyro = m_gyro;
+        ultrasonic = m_ultrasonic;
     resetSubsystem();
         topLeftMotor = new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_LEFT );
         topRightMotor= new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_RIGHT );
@@ -47,9 +53,7 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
 
     private double SpeedScale = Constants.DRIVETRAIN_SPEED_SCALE;
     public void driveWithMisery(double leftStick, double rightStick, double rotation){
-        if(rotation==0.0){
-            this.turnToAngle(gyro.getAngle());
-        }
+
         double forwardValue = leftStick * SpeedScale;
         double rotationValue = rotation * SpeedScale * 0.8;
         double leftValue = forwardValue + rotationValue;
@@ -126,7 +130,7 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
         double derivative = (error - this.previous_error) / 0.02;
         this.rcw = ((P * error) + (I * this.integral) + (D * derivative));
     }
-    public void turnToAngle(double setpoint) {
+    public double turnToAngle(double setpoint) {
         this.setpoint = setpoint;
         PID();
         double rotateSpeed = this.rcw;
@@ -139,14 +143,14 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
         } else {
             rotateSpeed = this.rcw;
         }
-        driveWithMisery(Constants.DRIVE_SPEED, 0, rotateSpeed);
+        return rotateSpeed;
     }
     public boolean ifSetAngle(){
         if (gyro.getAngle()==this.setpoint)
             return true;
         return false;
     }
-    public AHRS getGyro(){
+    public ADIS16448_IMU getGyro(){
         return gyro;
     }
     @Override
@@ -155,6 +159,8 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
         SmartDashboard.putNumber("Front Right Wheel", -topRightMotor.getMotorOutputPercent());
         SmartDashboard.putNumber("Back Left Wheel", bottomLeftMotor.getMotorOutputPercent());
         SmartDashboard.putNumber("Back Right Wheel", -bottomRightMotor.getMotorOutputPercent());
+        SmartDashboard.putNumber("Ultrasonic", ultrasonic.getDistance());
+        Shuffleboard.getTab("SmartDashboard").add(gyro);
     }
 
     @Override
