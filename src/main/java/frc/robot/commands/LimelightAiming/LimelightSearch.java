@@ -8,18 +8,23 @@ import frc.robot.subsystems.Drivetrain;
 public class LimelightSearch extends CommandBase{
     
     private Drivetrain requiredSubsystem;
+    private boolean found = false;
 
     public LimelightSearch(Drivetrain m_SubsystemBase) {
       requiredSubsystem = m_SubsystemBase;
       addRequirements(requiredSubsystem);      
     }
     @Override
-    public void initialize() {System.out.println("Seaching");
+    public void initialize() {System.out.println("Searching");
     }
     @Override
     public void execute() {
-        
-        requiredSubsystem.turnLeft(Constants.AIM_SPEED);
+        double seen = LimelightFetch.getV();
+
+        if (seen == 1.0)
+            found = true;
+        else
+            requiredSubsystem.turnLeft(Constants.AIM_SPEED);
 
 
     }
@@ -30,9 +35,7 @@ public class LimelightSearch extends CommandBase{
   
     @Override
     public boolean isFinished() {
-        double inVision = LimelightFetch.getV();
-   
-        if(inVision>0)
+        if (found == true)
             {
                 return true;
             }

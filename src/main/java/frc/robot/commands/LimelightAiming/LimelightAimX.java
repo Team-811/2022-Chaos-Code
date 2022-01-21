@@ -7,25 +7,39 @@ import frc.robot.subsystems.Drivetrain;
 public class LimelightAimX extends CommandBase{
 
     private Drivetrain requiredSubsystem;
+    private double left_command;
+    private double right_command;
   
     public LimelightAimX(Drivetrain m_SubsystemBase) {
       requiredSubsystem = m_SubsystemBase;
       addRequirements(requiredSubsystem);
-      System.out.println("Seachdas");
     }
     @Override
-    public void initialize() {}
+    public void initialize() {
+
+    }
   
     @Override
     public void execute() {
-        double x = LimelightFetch.getX();
-        System.out.print("Bruh");
-        if(x < -1){
-        requiredSubsystem.turnLeft(0.06);
+        System.out.println("Aiming");
+        double tx = LimelightFetch.getX();
+        float Kp = 0.02f; //turn speed constant
+        float min_command = 0.05f;
+        float heading_error = (float)tx;
+        float steering_adjust = 0.0f;
+        left_command = 0;
+        right_command = 0;
+        if(tx > 1.0){
+            steering_adjust = Kp*heading_error - min_command;
         }
-        if (x > 1){
-        requiredSubsystem.turnRight(0.06);
-    }
+        if (tx < 1.0){
+            steering_adjust = Kp*heading_error + min_command;
+        }
+        left_command += steering_adjust;
+        right_command -= steering_adjust;
+        requiredSubsystem.leftWheelsForward(left_command);
+        requiredSubsystem.rightWheelsForward(right_command);
+
     }
     @Override
     public void end(boolean interrupted) {
@@ -35,13 +49,17 @@ public class LimelightAimX extends CommandBase{
     @Override
     public boolean isFinished() {
         double x = LimelightFetch.getX();
-        if(x >= -1 && x <= 1 && x !=0.0)
+        if(x >= -3.0 && x <= 3.0 && x !=0.0)
         {
-            return false;
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if (x >= -3.0 && x <= 3.0 && x !=0.0)
+                return true;
         }
-        else
-        {
-            return true;
-        }
+        return false;
+        
     }
 }
