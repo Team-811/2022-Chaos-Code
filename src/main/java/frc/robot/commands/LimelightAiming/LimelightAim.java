@@ -11,6 +11,4 @@ public class LimelightAim extends SequentialCommandGroup{
       addRequirements(requiredSubsystem);
       addCommands(new LimelightSearch(requiredSubsystem), new LimelightAimX(requiredSubsystem));
     }
-
- 
 }

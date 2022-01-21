@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Vision.LimelightFetch;
 import frc.robot.subsystems.Drivetrain;
 
-public class LimelightAimX extends CommandBase{
+public class LimelightAimX extends CommandBase {
 
     private Drivetrain requiredSubsystem;
     private double left_command;
@@ -14,16 +14,11 @@ public class LimelightAimX extends CommandBase{
       requiredSubsystem = m_SubsystemBase;
       addRequirements(requiredSubsystem);
     }
-    @Override
-    public void initialize() {
-
-    }
   
     @Override
     public void execute() {
-        System.out.println("Aiming");
         double tx = LimelightFetch.getX();
-        float Kp = 0.02f; //turn speed constant
+        float Kp = 0.02f; 
         float min_command = 0.05f;
         float heading_error = (float)tx;
         float steering_adjust = 0.0f;
@@ -39,8 +34,8 @@ public class LimelightAimX extends CommandBase{
         right_command -= steering_adjust;
         requiredSubsystem.leftWheelsForward(left_command);
         requiredSubsystem.rightWheelsForward(right_command);
-
     }
+
     @Override
     public void end(boolean interrupted) {
         requiredSubsystem.stopRobot();
@@ -59,7 +54,6 @@ public class LimelightAimX extends CommandBase{
             if (x >= -2.0 && x <= 2.0 && x !=0.0)
                 return true;
         }
-        return false;
-        
+        return false;    
     }
 }

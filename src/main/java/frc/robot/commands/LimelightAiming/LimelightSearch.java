@@ -14,9 +14,7 @@ public class LimelightSearch extends CommandBase{
       requiredSubsystem = m_SubsystemBase;
       addRequirements(requiredSubsystem);      
     }
-    @Override
-    public void initialize() {System.out.println("Searching");
-    }
+    
     @Override
     public void execute() {
         double seen = LimelightFetch.getV();
@@ -25,7 +23,6 @@ public class LimelightSearch extends CommandBase{
             found = true;
         else
             requiredSubsystem.turnLeft(Constants.AIM_SPEED);
-
 
     }
     @Override
