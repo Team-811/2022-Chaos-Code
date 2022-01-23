@@ -31,7 +31,7 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
     private double D = 1;
     private double integral = 0;
     private double previous_error = 0;
-    private double  setpoint = 0;
+    private double setpoint = 0;
     private double rcw = 0;
     private ADIS16448_IMU gyro;
     private Ultrasonic ultrasonic;
