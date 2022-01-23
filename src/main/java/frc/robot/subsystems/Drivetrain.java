@@ -33,19 +33,19 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
     private double previous_error = 0;
     private double  setpoint = 0;
     private double rcw = 0;
-    private ADIS16448_IMU gyro;
+    private ADIS16448_IMU gyro= new ADIS16448_IMU();
     private Ultrasonic ultrasonic;
 
-    public Drivetrain(ADIS16448_IMU m_gyro, Ultrasonic m_ultrasonic){
-        gyro = m_gyro;
+    public Drivetrain( Ultrasonic m_ultrasonic){
         ultrasonic = m_ultrasonic;
     resetSubsystem();
+        gyro.calibrate();
         topLeftMotor = new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_LEFT );
         topRightMotor= new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_RIGHT );
         bottomLeftMotor = new TalonSRX(RobotMap.DRIVE_TRAIN_BOTTOM_LEFT );
         bottomRightMotor= new TalonSRX(RobotMap.DRIVE_TRAIN_BOTTOM_RIGHT );
-        topLeftMotor .set(ControlMode.PercentOutput, 0.0f);
-        topRightMotor .set(ControlMode.PercentOutput, 0.0f);
+        topLeftMotor.set(ControlMode.PercentOutput, 0.0f);
+        topRightMotor.set(ControlMode.PercentOutput, 0.0f);
         bottomLeftMotor.set(ControlMode.PercentOutput, 0.0f);
         bottomRightMotor.set(ControlMode.PercentOutput, 0.0f);
     }
