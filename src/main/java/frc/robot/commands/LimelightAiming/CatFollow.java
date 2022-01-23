@@ -19,8 +19,8 @@ public class CatFollow extends CommandBase {
     @Override
     public void execute() {
         double tx = LimelightFetch.getX();
-        float Kp = 0.04f; 
-        float min_command = 0.07f;
+        float Kp = 0.03f; 
+        float min_command = 0.05f;
         float heading_error = (float)tx;
         float steering_adjust = 0.0f;
         left_command = 0;
@@ -46,14 +46,14 @@ public class CatFollow extends CommandBase {
     @Override
     public boolean isFinished() {
         double x = LimelightFetch.getX();
-        if(x >= -20.0 && x <= 20.0 && x !=0.0)
+        if(x >= -20.0 && x <= 20.0)
         {
              try {
              Thread.sleep(50);
              } catch (InterruptedException e) {
                  e.printStackTrace();
              }
-            if (x >= -20.0 && x <= 20.0 && x !=0.0)
+            if (x >= -20.0 && x <= 20.0)
                 return true;
         }
         return false;    

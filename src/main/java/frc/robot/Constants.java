@@ -20,7 +20,7 @@ public final class Constants {
     public static final double DRIVE_SPEED = 0.1;
     public static final double AIM_SPEED = 0.4;   
     public static final double STRAFE_SPEED = 0.7; 
-    public static final double CAT_DRIVE_SPEED = 0.5;
+    public static final double CAT_DRIVE_SPEED = 0.3;
 
 
 }
