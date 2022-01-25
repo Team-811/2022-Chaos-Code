@@ -20,7 +20,7 @@ public class CatFollow extends CommandBase {
     public void execute() {
         double tx = LimelightFetch.getX();
         float Kp = 0.03f; 
-        float min_command = 0.05f;
+        float min_command = 0.03f;
         float heading_error = (float)tx;
         float steering_adjust = 0.0f;
         left_command = 0;
@@ -35,7 +35,6 @@ public class CatFollow extends CommandBase {
         right_command = right_command - steering_adjust + Constants.CAT_DRIVE_SPEED;
         requiredSubsystem.leftWheelsForward(left_command);
         requiredSubsystem.rightWheelsForward(right_command);
-        System.out.println("it should be working");
     }
 
     @Override
