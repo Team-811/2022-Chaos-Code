@@ -38,8 +38,8 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
 
     public Drivetrain( Ultrasonic m_ultrasonic){
         ultrasonic = m_ultrasonic;
-    resetSubsystem();
-        gyro.calibrate();
+        resetSubsystem();
+//      gyro.calibrate();
         topLeftMotor = new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_LEFT );
         topRightMotor= new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_RIGHT );
         bottomLeftMotor = new TalonSRX(RobotMap.DRIVE_TRAIN_BOTTOM_LEFT );

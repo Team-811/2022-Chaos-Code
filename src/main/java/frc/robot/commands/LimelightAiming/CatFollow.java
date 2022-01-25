@@ -56,6 +56,8 @@ public class CatFollow extends CommandBase {
             if (x >= -20.0 && x <= 20.0)
                 return true;
         }
+        if (LimelightFetch.getV() != 1.0) 
+            return true;
         return false;    
     }
 }
