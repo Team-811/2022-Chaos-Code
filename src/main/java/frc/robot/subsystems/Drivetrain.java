@@ -39,7 +39,7 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
     public Drivetrain( Ultrasonic m_ultrasonic){
         ultrasonic = m_ultrasonic;
         resetSubsystem();
-//      gyro.calibrate();
+        gyro.calibrate();
         topLeftMotor = new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_LEFT );
         topRightMotor= new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_RIGHT );
         bottomLeftMotor = new TalonSRX(RobotMap.DRIVE_TRAIN_BOTTOM_LEFT );
@@ -80,6 +80,14 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
     public void rightWheelsForward(double speed){
         topRightMotor.set(ControlMode.PercentOutput, -speed);
         bottomRightMotor.set(ControlMode.PercentOutput, -speed);
+    }
+    public void leftWheelsBackward(double speed){
+        topLeftMotor.set(ControlMode.PercentOutput, -speed);
+        bottomLeftMotor.set(ControlMode.PercentOutput, -speed);
+    }
+    public void rightWheelsBackward(double speed){
+        topRightMotor.set(ControlMode.PercentOutput, speed);
+        bottomRightMotor.set(ControlMode.PercentOutput, speed);
     }
     public void mechanumWHeelRight(double speed){
         topRightMotor.set(ControlMode.PercentOutput, speed);
