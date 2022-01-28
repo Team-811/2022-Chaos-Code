@@ -1,17 +1,17 @@
-package frc.robot.commands.LimelightAiming;
+package frc.robot.commands.Auto.Auto.CargoSeeking;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Vision.LimelightFetch;
 import frc.robot.subsystems.Drivetrain;
 
-public class CatFollow extends CommandBase {
+public class AutoCatFollow extends CommandBase {
 
     private Drivetrain requiredSubsystem;
     private double left_command;
     private double right_command;
   
-    public CatFollow(Drivetrain m_SubsystemBase) {
+    public AutoCatFollow(Drivetrain m_SubsystemBase) {
       requiredSubsystem = m_SubsystemBase;
       addRequirements(requiredSubsystem);
     }

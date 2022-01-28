@@ -1,4 +1,4 @@
-package frc.robot.commands.LimelightAiming;
+package frc.robot.commands.LimelightAiming.Aiming;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Vision.LimelightFetch;
