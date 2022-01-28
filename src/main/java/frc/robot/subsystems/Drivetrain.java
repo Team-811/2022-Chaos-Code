@@ -5,8 +5,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 // import com.ctre.phoenix.motorcontrol.ControlMode;
 // import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -33,13 +33,14 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
     private double previous_error = 0;
     private double setpoint = 0;
     private double rcw = 0;
-    private ADIS16448_IMU gyro= new ADIS16448_IMU();
+    private AHRS gyro= new AHRS();
     private Ultrasonic ultrasonic;
 
-    public Drivetrain( Ultrasonic m_ultrasonic){
+    public Drivetrain( Ultrasonic m_ultrasonic, AHRS m_gyro){
+        gyro = m_gyro;
         ultrasonic = m_ultrasonic;
         resetSubsystem();
-//      gyro.calibrate();
+        gyro.calibrate();
         topLeftMotor = new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_LEFT );
         topRightMotor= new TalonSRX(RobotMap.DRIVE_TRAIN_TOP_RIGHT );
         bottomLeftMotor = new TalonSRX(RobotMap.DRIVE_TRAIN_BOTTOM_LEFT );
@@ -80,6 +81,14 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
     public void rightWheelsForward(double speed){
         topRightMotor.set(ControlMode.PercentOutput, -speed);
         bottomRightMotor.set(ControlMode.PercentOutput, -speed);
+    }
+    public void leftWheelsBackward(double speed){
+        topLeftMotor.set(ControlMode.PercentOutput, -speed);
+        bottomLeftMotor.set(ControlMode.PercentOutput, -speed);
+    }
+    public void rightWheelsBackward(double speed){
+        topRightMotor.set(ControlMode.PercentOutput, speed);
+        bottomRightMotor.set(ControlMode.PercentOutput, speed);
     }
     public void mechanumWHeelRight(double speed){
         topRightMotor.set(ControlMode.PercentOutput, speed);
@@ -149,7 +158,7 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
             return true;
         return false;
     }
-    public ADIS16448_IMU getGyro(){
+    public AHRS getGyro(){
         return gyro;
     }
     @Override

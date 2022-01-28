@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
-  private RobotContainer m_robotContainer= new RobotContainer();
+  //private RobotContainer m_robotContainer= new RobotContainer();
  // public static Drivetrain drivetrain;
 
   /**
@@ -65,7 +65,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+  //  m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
 
     // schedule the autonomous command (example)

@@ -22,8 +22,8 @@ public class LimelightAimX extends CommandBase {
             exit = true;
         }
         double tx = LimelightFetch.getX();
-        float Kp = 0.02f; 
-        float min_command = 0.05f;
+        float Kp = 0.03f; 
+        float min_command = 0.04f;
         float heading_error = (float)tx;
         float steering_adjust = 0.0f;
         left_command = 0;
