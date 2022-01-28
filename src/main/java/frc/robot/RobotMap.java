@@ -7,6 +7,7 @@ public class RobotMap {
     public static final int DRIVE_TRAIN_TOP_RIGHT = 2;
     public static final int DRIVE_TRAIN_BOTTOM_LEFT = 3;
     public static final int DRIVE_TRAIN_BOTTOM_RIGHT = 4;
+    public static final int INTAKE_MOTOR = 0; // Placeholder
 
 
 }
