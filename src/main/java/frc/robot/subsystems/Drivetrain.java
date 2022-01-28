@@ -5,8 +5,8 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 // import com.ctre.phoenix.motorcontrol.ControlMode;
 // import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -33,10 +33,11 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
     private double previous_error = 0;
     private double setpoint = 0;
     private double rcw = 0;
-    private ADIS16448_IMU gyro= new ADIS16448_IMU();
+    private AHRS gyro= new AHRS();
     private Ultrasonic ultrasonic;
 
-    public Drivetrain( Ultrasonic m_ultrasonic){
+    public Drivetrain( Ultrasonic m_ultrasonic, AHRS m_gyro){
+        gyro = m_gyro;
         ultrasonic = m_ultrasonic;
         resetSubsystem();
         gyro.calibrate();
@@ -157,7 +158,7 @@ public class Drivetrain extends SubsystemBase implements ISubsystem {
             return true;
         return false;
     }
-    public ADIS16448_IMU getGyro(){
+    public AHRS getGyro(){
         return gyro;
     }
     @Override
