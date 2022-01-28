@@ -16,7 +16,7 @@ import frc.robot.commands.Drivetrain.DriveLeft;
 import frc.robot.commands.Drivetrain.DriveRight;
 import frc.robot.commands.Drivetrain.DriveStop;
 import frc.robot.commands.Drivetrain.DrivingCommand;
-import frc.robot.commands.LimelightAiming.Cat;
+import frc.robot.commands.LimelightAiming.CargoSeeking.Cat;
 // import frc.robot.commands.LimelightAiming.LimelightAimX;
 // import frc.robot.commands.LimelightAiming.LimelightAimY;
 // import frc.robot.commands.LimelightAiming.LimelightSearch;
