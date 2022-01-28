@@ -8,7 +8,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Vision.Ultrasonic;
-import frc.robot.commands.ExampleCommand;
+//import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Drivetrain.DriveLeft;
 import frc.robot.commands.Drivetrain.DriveRight;
 import frc.robot.commands.Drivetrain.DriveStop;
@@ -20,7 +20,7 @@ import frc.robot.commands.LimelightAiming.LimelightAim;
 // import frc.robot.commands.LimelightAiming.LimelightSearch;
 import frc.robot.controllers.BobXboxController;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
+//import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 // import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
@@ -31,8 +31,8 @@ import edu.wpi.first.wpilibj2.command.Command;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  // // The robot's subsystems and commands are defined here...
+  // private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
  // private static final AHRS gyro = new AHRS();
   
   private static final Ultrasonic ultrasonic = new Ultrasonic();
@@ -42,7 +42,7 @@ public class RobotContainer {
   public static BobXboxController driveController;
   public static BobXboxController operatorController;
 
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  // private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -84,10 +84,10 @@ public class RobotContainer {
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return m_autoCommand;
-  }
+  // public Command getAutonomousCommand() {
+  //   // An ExampleCommand will run in autonomous
+  //   //return m_autoCommand;
+  // }
   public static void updateSmartdashboard() {
     drivetrain.outputSmartdashboard();
   }
