@@ -10,7 +10,7 @@ import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Vision.Ultrasonic;
-import frc.robot.commands.Auto.Auto.Aiming.LimelightAim;
+import frc.robot.commands.Auto.Auto.Aiming.AutoLimelightAim;
 //import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Drivetrain.DriveLeft;
 import frc.robot.commands.Drivetrain.DriveRight;
@@ -71,7 +71,7 @@ public class RobotContainer {
     // LimelightAimY limeAimY = new LimelightAimY(drivetrain);
     // LimelightAimX limeAimX = new LimelightAimX(drivetrain);
     // Command[] LimelightAimingCommands = {limeSearch, limeAimY, limeAimX};
-     driveController.bButton.whileHeld(new LimelightAim(drivetrain));
+     driveController.bButton.whileHeld(new AutoLimelightAim(drivetrain));
      driveController.xButton.whileHeld(new Cat(drivetrain));
      driveController.leftTriggerButton.whileHeld(new DriveLeft(drivetrain));
      driveController.leftTriggerButton.whenReleased(new DriveStop(drivetrain));

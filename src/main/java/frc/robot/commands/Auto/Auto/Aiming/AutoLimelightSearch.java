@@ -1,16 +1,16 @@
-package frc.robot.commands.LimelightAiming;
+package frc.robot.commands.Auto.Auto.Aiming;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.Vision.LimelightFetch;
 import frc.robot.subsystems.Drivetrain;
 
-public class LimelightSearch extends CommandBase{
+public class AutoLimelightSearch extends CommandBase{
     
     private Drivetrain requiredSubsystem;
     private boolean found = false;
 
-    public LimelightSearch(Drivetrain m_SubsystemBase) {
+    public AutoLimelightSearch(Drivetrain m_SubsystemBase) {
       requiredSubsystem = m_SubsystemBase;
       addRequirements(requiredSubsystem);      
     }
