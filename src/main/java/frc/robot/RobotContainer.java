@@ -14,7 +14,6 @@ import frc.robot.commands.Auto.Auto.Aiming.AutoLimelightAim;
 //import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Drivetrain.DriveLeft;
 import frc.robot.commands.Drivetrain.DriveRight;
-import frc.robot.commands.Drivetrain.DriveStop;
 import frc.robot.commands.Drivetrain.DrivingCommand;
 import frc.robot.commands.Intake.IntakeForward;
 import frc.robot.commands.Intake.IntakeStop;
@@ -78,9 +77,9 @@ public class RobotContainer {
      driveController.bButton.whileHeld(new AutoLimelightAim(drivetrain));
      driveController.xButton.whileHeld(new Cat(drivetrain));
      driveController.leftTriggerButton.whileHeld(new DriveLeft(drivetrain));
-     driveController.leftTriggerButton.whenReleased(new DriveStop(drivetrain));
+    //  driveController.leftTriggerButton.whenReleased(new DriveStop(drivetrain));
      driveController.rightTriggerButton.whileHeld(new DriveRight(drivetrain));
-     driveController.rightTriggerButton.whenReleased(new DriveStop(drivetrain));
+    //  driveController.rightTriggerButton.whenReleased(new DriveStop(drivetrain));
   //  driveController.bButton.whenPressed(new LimelightAimX2(drivetrain));
 
 
