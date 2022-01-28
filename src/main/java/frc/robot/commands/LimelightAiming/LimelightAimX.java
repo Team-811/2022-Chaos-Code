@@ -9,6 +9,7 @@ public class LimelightAimX extends CommandBase {
     private Drivetrain requiredSubsystem;
     private double left_command;
     private double right_command;
+    private boolean exit = false;
   
     public LimelightAimX(Drivetrain m_SubsystemBase) {
       requiredSubsystem = m_SubsystemBase;
@@ -17,6 +18,9 @@ public class LimelightAimX extends CommandBase {
   
     @Override
     public void execute() {
+        if (LimelightFetch.getV() != 1.0) {
+            exit = true;
+        }
         double tx = LimelightFetch.getX();
         float Kp = 0.02f; 
         float min_command = 0.05f;
@@ -43,6 +47,10 @@ public class LimelightAimX extends CommandBase {
   
     @Override
     public boolean isFinished() {
+        if (exit == true){
+            exit = false;
+            return true;
+        }
         double x = LimelightFetch.getX();
         if(x >= -2.0 && x <= 2.0 && x !=0.0)
         {
