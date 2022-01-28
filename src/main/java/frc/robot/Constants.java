@@ -22,5 +22,7 @@ public final class Constants {
     public static final double STRAFE_SPEED = 0.7; 
     public static final double CAT_DRIVE_SPEED = 0.3;
 
+    public static final double INTAKE_SPEED = 0.0; // placeholder
+
 
 }

@@ -16,6 +16,8 @@ import frc.robot.commands.Drivetrain.DriveLeft;
 import frc.robot.commands.Drivetrain.DriveRight;
 import frc.robot.commands.Drivetrain.DriveStop;
 import frc.robot.commands.Drivetrain.DrivingCommand;
+import frc.robot.commands.Intake.IntakeForward;
+import frc.robot.commands.Intake.IntakeStop;
 import frc.robot.commands.LimelightAiming.CargoSeeking.Cat;
 // import frc.robot.commands.LimelightAiming.LimelightAimX;
 // import frc.robot.commands.LimelightAiming.LimelightAimY;
@@ -25,6 +27,7 @@ import frc.robot.subsystems.Drivetrain;
 //import frc.robot.subsystems.ExampleSubsystem;
 //import edu.wpi.first.wpilibj2.command.Command;
 // import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.subsystems.Intake;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -39,6 +42,7 @@ public class RobotContainer {
   
   private static final Ultrasonic ultrasonic = new Ultrasonic();
   private static final Drivetrain drivetrain = new Drivetrain(ultrasonic, gyro);
+  private static final Intake intake = new Intake();
   // private static final Kicker kicker = new Kicker();
   // Compressor pcmCompressor = new Compressor(PneumaticsModuleType.CTREPCM);
   public static BobXboxController driveController;
@@ -78,6 +82,11 @@ public class RobotContainer {
      driveController.rightTriggerButton.whileHeld(new DriveRight(drivetrain));
      driveController.rightTriggerButton.whenReleased(new DriveStop(drivetrain));
   //  driveController.bButton.whenPressed(new LimelightAimX2(drivetrain));
+
+
+     operatorController.xButton.whenHeld(new IntakeForward(intake));
+     operatorController.xButton.whenReleased(new IntakeStop(intake));
+
 
   }
 
