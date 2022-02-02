@@ -6,12 +6,12 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 
 public class SnakeEyesFetch extends TimedRobot{
-    static NetworkTable table = NetworkTableInstance.getDefault().getTable("snakeeyes");
+    static NetworkTable table = NetworkTableInstance.getDefault().getTable("photonvision");
     static NetworkTableEntry tx = table.getEntry("tx");
     static NetworkTableEntry ty = table.getEntry("ty");
     static NetworkTableEntry ta = table.getEntry("ta");
     static NetworkTableEntry tv = table.getEntry("tv");
-
+    
     static double x = tx.getDouble(0.0);
     static double y = ty.getDouble(0.0);
     static double area = ta.getDouble(0.0);

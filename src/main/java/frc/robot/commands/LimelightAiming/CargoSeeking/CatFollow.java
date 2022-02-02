@@ -2,7 +2,7 @@ package frc.robot.commands.LimelightAiming.CargoSeeking;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
-import frc.robot.Vision.LimelightFetch;
+import frc.robot.Vision.SnakeEyesFetch;
 import frc.robot.subsystems.Drivetrain;
 
 public class CatFollow extends CommandBase {
@@ -18,7 +18,7 @@ public class CatFollow extends CommandBase {
   
     @Override
     public void execute() {
-        double tx = LimelightFetch.getX();
+        double tx = SnakeEyesFetch.getX();
         float Kp = 0.03f; 
         float min_command = 0.05f;
         float heading_error = (float)tx;
@@ -34,7 +34,7 @@ public class CatFollow extends CommandBase {
         left_command = left_command + steering_adjust + Constants.CAT_DRIVE_SPEED;
         right_command = right_command - steering_adjust + Constants.CAT_DRIVE_SPEED;
         requiredSubsystem.leftWheelsForward(left_command);
-        requiredSubsystem.rightWheelsForward(right_command);
+        requiredSubsystem.rightWheelsForward(right_command); 
     }
 
     @Override
@@ -44,7 +44,7 @@ public class CatFollow extends CommandBase {
   
     @Override
     public boolean isFinished() {
-        double x = LimelightFetch.getX();
+        double x = SnakeEyesFetch.getX();
         if(x >= -20.0 && x <= 20.0)
         {
              try {
